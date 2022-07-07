@@ -7,6 +7,7 @@
 
 import Foundation
 import Accessibility
+import SwiftUI
 
 class MemoryGameTheme: ObservableObject {
     
@@ -19,6 +20,8 @@ class MemoryGameTheme: ObservableObject {
     }
     
     static var choiseTheme = ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"]
+    static var themeName = "Animals"
+    static var colorCard = Color.gray
     
     func theme(_ choiseTheme: ChoiseTheme) {
         let randomTheme = ChoiseTheme.allCases.randomElement()!
@@ -26,21 +29,31 @@ class MemoryGameTheme: ObservableObject {
         case .car:
             let emojis = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜", "🏍", "🚲", "🚁", "✈️", "🛵", "🚀", "🛶", "🛸", "⛵️", "🚅"] // red
             MemoryGameTheme.choiseTheme = emojis
+            MemoryGameTheme.themeName = "Cars"
+            MemoryGameTheme.colorCard = .red
         case .animal:
             let emojis = ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"]
             // gray
             MemoryGameTheme.choiseTheme = emojis
+            MemoryGameTheme.themeName = "Animals"
+            MemoryGameTheme.colorCard = .gray
         case .item:
             let emojis = ["💻", "⌚️", "📱", "⌨️", "🖥", "🖨", "🖲", "🕹", "🎥", "📷", "☎️", "📺", "⏰", "🎛", "📟", "📡", "🧯"]
             // purple
             MemoryGameTheme.choiseTheme = emojis
+            MemoryGameTheme.themeName = "Items"
+            MemoryGameTheme.colorCard = .purple
         case .food:
             let emojis = ["🍎", "🍏", "🍊", "🍐", "🍋", "🍌", "🥭", "🍒", "🍆", "🍑", "🍓", "🫐", "🫒", "🧀", "🍟", "🍕", "🥙"]
             // yelow
             MemoryGameTheme.choiseTheme = emojis
+            MemoryGameTheme.themeName = "Food"
+            MemoryGameTheme.colorCard = .yellow
         case .face:
             let emojis = ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄", "😁"] // green
             MemoryGameTheme.choiseTheme = emojis
+            MemoryGameTheme.themeName = "Face"
+            MemoryGameTheme.colorCard = .green
         }
         print(randomTheme)
         print(MemoryGameTheme.choiseTheme)
@@ -53,4 +66,4 @@ class MemoryGameTheme: ObservableObject {
     
     
 }
-    
+
