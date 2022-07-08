@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @ObservedObject var viewModel: EmojiMemoryGame
     var model: MemoryGameTheme
     var body: some View {
@@ -36,13 +35,13 @@ struct ContentView: View {
     }
     
     var newGame: some View {
-        Button(action: {
-                model.refreshTheme()
-        }, label: {
-            Text("New Game")
-                .font(.title)
-                .fontWeight(.heavy)
-        })
+                Button(action: {
+                    model.refreshTheme()
+                }, label: {
+                    Text("New Game")
+                        .font(.title)
+                        .fontWeight(.heavy)
+                })
     }
     var nameTheme: some View {
         Text ("\(MemoryGameTheme.themeName)")
@@ -50,6 +49,8 @@ struct ContentView: View {
             .fontWeight(.heavy)
     }
 }
+
+
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
