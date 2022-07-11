@@ -18,7 +18,7 @@ struct MemoryGameTheme {
      .item: MemoryGameTheme(choiseTheme: .item, themeEmojis: ["💻", "⌚️", "📱", "⌨️", "🖥", "🖨", "🖲", "🕹", "🎥", "📷", "☎️", "📺", "⏰", "🎛", "📟", "📡", "🧯"], themeName: "Items", colorCard: .purple),
      .food: MemoryGameTheme(choiseTheme: .food, themeEmojis: ["🍎", "🍏", "🍊", "🍐", "🍋", "🍌", "🥭", "🍒", "🍆", "🍑", "🍓", "🫐", "🫒", "🧀", "🍟", "🍕", "🥙"], themeName: "Foods", colorCard: .yellow),
      .face: MemoryGameTheme(choiseTheme: .face, themeEmojis: ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄",], themeName: "Faces", colorCard: .green),
-     .flag: MemoryGameTheme(choiseTheme: .flag, themeEmojis: ["🏳️‍🌈", "🇦🇿", "🇺🇦", "🇸🇽", "🇹🇬", "🇺🇸", "🇰🇷", "🇳🇴", "🇳🇿", "🇳🇺", "🇬🇪", "🇩🇪", "🇧🇪", "🇦🇹", "🇮🇴", "🇺🇳", "🎌"], themeName: "Flags", colorCard: .brown)]
+     .flag: MemoryGameTheme(choiseTheme: .flag, themeEmojis: ["🏳️‍🌈", "🇦🇿", "🇺🇦", "🇸🇽", "🇹🇬", "🇺🇸", "🇰🇷", "🇳🇴", "🇳🇿", "🇳🇺", "🇬🇪", "🇩🇪", "🇧🇪", "🇦🇹", "🇮🇴", "🇺🇳", "🎌"], themeName: "Flags", colorCard: .pink)]
     
     // Type of Themes
     enum ChoiseTheme: CaseIterable {

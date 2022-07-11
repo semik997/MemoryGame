@@ -31,6 +31,8 @@ struct ContentView: View {
                 newGame
                 Spacer()
                 nameTheme
+                Spacer()
+                score
             }
         }
         .padding(.horizontal)
@@ -51,6 +53,12 @@ struct ContentView: View {
         Text ("\(emojisGame.themeName)")
             .font(.title3)
             .fontWeight(.heavy)
+    }
+    
+    var score: some View {
+            Text("Score: \(emojisGame.score)")
+                .font(.title3)
+                .fontWeight(.heavy)
     }
     
     func onActivate() {

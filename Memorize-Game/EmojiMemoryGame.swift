@@ -32,6 +32,9 @@ class EmojiMemoryGame: ObservableObject {
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
+    var score: Int {
+        model.score
+    }
     
     // MARK: - Intens(s)
     
