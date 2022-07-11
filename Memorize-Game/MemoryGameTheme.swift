@@ -13,11 +13,12 @@ struct MemoryGameTheme {
     
     // List of the theme
     static let allThemes: [ChoiseTheme: MemoryGameTheme] =
-    [.car: MemoryGameTheme(choiseTheme: .car, themeEmojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜", "🏍", "🚲", "🚁", "✈️", "🛵", "🚀", "🛶", "🛸", "⛵️", "🚅"], themeName: "Cars", colorCard: .red),
-     .animal: MemoryGameTheme(choiseTheme: .animal, themeEmojis: ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"], themeName: "Animals", colorCard: .blue),
+    [.car: MemoryGameTheme(choiseTheme: .car, themeEmojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜", "🏍", "🚲", "🚁"], themeName: "Cars", colorCard: .red),
+     .animal: MemoryGameTheme(choiseTheme: .animal, themeEmojis: ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐢"], themeName: "Animals", colorCard: .blue),
      .item: MemoryGameTheme(choiseTheme: .item, themeEmojis: ["💻", "⌚️", "📱", "⌨️", "🖥", "🖨", "🖲", "🕹", "🎥", "📷", "☎️", "📺", "⏰", "🎛", "📟", "📡", "🧯"], themeName: "Items", colorCard: .purple),
      .food: MemoryGameTheme(choiseTheme: .food, themeEmojis: ["🍎", "🍏", "🍊", "🍐", "🍋", "🍌", "🥭", "🍒", "🍆", "🍑", "🍓", "🫐", "🫒", "🧀", "🍟", "🍕", "🥙"], themeName: "Foods", colorCard: .yellow),
-     .face: MemoryGameTheme(choiseTheme: .face, themeEmojis: ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄", "😁"], themeName: "Faces", colorCard: .green)]
+     .face: MemoryGameTheme(choiseTheme: .face, themeEmojis: ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄",], themeName: "Faces", colorCard: .green),
+     .flag: MemoryGameTheme(choiseTheme: .flag, themeEmojis: ["🏳️‍🌈", "🇦🇿", "🇺🇦", "🇸🇽", "🇹🇬", "🇺🇸", "🇰🇷", "🇳🇴", "🇳🇿", "🇳🇺", "🇬🇪", "🇩🇪", "🇧🇪", "🇦🇹", "🇮🇴", "🇺🇳", "🎌"], themeName: "Flags", colorCard: .brown)]
     
     // Type of Themes
     enum ChoiseTheme: CaseIterable {
@@ -26,6 +27,7 @@ struct MemoryGameTheme {
         case item
         case food
         case face
+        case flag
     }
     
     var choiseTheme: ChoiseTheme = .animal

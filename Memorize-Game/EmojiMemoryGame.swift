@@ -11,7 +11,9 @@ class EmojiMemoryGame: ObservableObject {
     
     //Create a new memory game based on specific theme
     static func createMemoreGame(theme: MemoryGameTheme) -> MemoryGame<String> {
-        return MemoryGame<String>(numberOfPairOfCards: theme.themeEmojis.count) { pairIndex in
+        
+        let count = Int.random(in: 4...17)
+        return MemoryGame<String>(numberOfPairOfCards: count) { pairIndex in
             theme.themeEmojis[pairIndex]
         }
     }
