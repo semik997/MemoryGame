@@ -9,8 +9,17 @@ import Foundation
 import Accessibility
 import SwiftUI
 
-class MemoryGameTheme: ObservableObject {
+struct MemoryGameTheme {
     
+    // List of the theme
+    static let allThemes: [ChoiseTheme: MemoryGameTheme] =
+    [.car: MemoryGameTheme(choiseTheme: .car, themeEmojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜", "🏍", "🚲", "🚁", "✈️", "🛵", "🚀", "🛶", "🛸", "⛵️", "🚅"], themeName: "Cars", colorCard: .red),
+     .animal: MemoryGameTheme(choiseTheme: .animal, themeEmojis: ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"], themeName: "Animals", colorCard: .blue),
+     .item: MemoryGameTheme(choiseTheme: .item, themeEmojis: ["💻", "⌚️", "📱", "⌨️", "🖥", "🖨", "🖲", "🕹", "🎥", "📷", "☎️", "📺", "⏰", "🎛", "📟", "📡", "🧯"], themeName: "Items", colorCard: .purple),
+     .food: MemoryGameTheme(choiseTheme: .food, themeEmojis: ["🍎", "🍏", "🍊", "🍐", "🍋", "🍌", "🥭", "🍒", "🍆", "🍑", "🍓", "🫐", "🫒", "🧀", "🍟", "🍕", "🥙"], themeName: "Foods", colorCard: .yellow),
+     .face: MemoryGameTheme(choiseTheme: .face, themeEmojis: ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄", "😁"], themeName: "Faces", colorCard: .green)]
+    
+    // Type of Themes
     enum ChoiseTheme: CaseIterable {
         case car
         case animal
@@ -19,51 +28,23 @@ class MemoryGameTheme: ObservableObject {
         case face
     }
     
-    static var choiseTheme = ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"]
-    static var themeName = "Animals"
-    static var colorCard = Color.gray
+    var choiseTheme: ChoiseTheme = .animal
+    var themeEmojis = ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"]
+    var themeName = "Animals"
+    var colorCard = Color.blue
     
-    func theme(_ choiseTheme: ChoiseTheme) {
+    mutating func changeTheme(_ choiseTheme: ChoiseTheme) {
         let randomTheme = ChoiseTheme.allCases.randomElement()!
-        switch randomTheme {
-        case .car:
-            let emojis = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜", "🏍", "🚲", "🚁", "✈️", "🛵", "🚀", "🛶", "🛸", "⛵️", "🚅"] // red
-            MemoryGameTheme.choiseTheme = emojis
-            MemoryGameTheme.themeName = "Cars"
-            MemoryGameTheme.colorCard = .red
-        case .animal:
-            let emojis = ["🐣", "🙉", "🙊", "🙈", "🐵", "🐽", "🐸", "🦊", "🐨", "🐹", "🐰", "🐻", "🐼", "🐻‍❄️", "🐶", "🐱", "🐮"]
-            // gray
-            MemoryGameTheme.choiseTheme = emojis
-            MemoryGameTheme.themeName = "Animals"
-            MemoryGameTheme.colorCard = .gray
-        case .item:
-            let emojis = ["💻", "⌚️", "📱", "⌨️", "🖥", "🖨", "🖲", "🕹", "🎥", "📷", "☎️", "📺", "⏰", "🎛", "📟", "📡", "🧯"]
-            // purple
-            MemoryGameTheme.choiseTheme = emojis
-            MemoryGameTheme.themeName = "Items"
-            MemoryGameTheme.colorCard = .purple
-        case .food:
-            let emojis = ["🍎", "🍏", "🍊", "🍐", "🍋", "🍌", "🥭", "🍒", "🍆", "🍑", "🍓", "🫐", "🫒", "🧀", "🍟", "🍕", "🥙"]
-            // yelow
-            MemoryGameTheme.choiseTheme = emojis
-            MemoryGameTheme.themeName = "Food"
-            MemoryGameTheme.colorCard = .yellow
-        case .face:
-            let emojis = ["😀", "🥳", "😋", "😗", "🥰", "😍", "😛", "😌", "😡", "🤯", "🤬", "🥵", "😫", "🧐", "☺️", "😃", "😄", "😁"] // green
-            MemoryGameTheme.choiseTheme = emojis
-            MemoryGameTheme.themeName = "Face"
-            MemoryGameTheme.colorCard = .green
-        }
-        print(randomTheme)
-        print(MemoryGameTheme.choiseTheme)
+        //Initialise the theme from static dictionnary
+        let theme = Self.allThemes[randomTheme]!
+        self.choiseTheme = theme.choiseTheme
+        self.themeEmojis = theme.themeEmojis
+        self.themeName = theme.themeName
+        self.colorCard = theme.colorCard
     }
     
-    func refreshTheme() {
-        theme(ChoiseTheme.car)
-        
+    // Mutanting func to change theme
+    mutating func refreshTheme() {
+        changeTheme(ChoiseTheme.car)
     }
-    
-    
 }
-

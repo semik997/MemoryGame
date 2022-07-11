@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
-    var model: MemoryGameTheme
+    // Emoji memory game must declared as Observed object
+    // to enable SwiftUI to update when something change in it
+    @ObservedObject var emojisGame: EmojiMemoryGame
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-                    ForEach (viewModel.cards) { card in
+                    ForEach (emojisGame.cards) { card in
                         CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                emojisGame.choose(card)
                             }
                     }
                 }
             }
-            .foregroundColor(.red)
+            // Use theme color for cards
+            .foregroundColor(emojisGame.colorCard)
             Spacer()
             HStack {
                 newGame
@@ -35,22 +37,26 @@ struct ContentView: View {
     }
     
     var newGame: some View {
-                Button(action: {
-                    model.refreshTheme()
-                }, label: {
-                    Text("New Game")
-                        .font(.title)
-                        .fontWeight(.heavy)
-                })
+        Button(action: {
+            // Reset emoji game with theme change
+            emojisGame.refreshTheme()
+            self.onActivate()
+        }, label: {
+            Text("New Game")
+                .font(.title)
+                .fontWeight(.heavy)
+        })
     }
     var nameTheme: some View {
-        Text ("\(MemoryGameTheme.themeName)")
+        Text ("\(emojisGame.themeName)")
             .font(.title3)
             .fontWeight(.heavy)
     }
+    
+    func onActivate() {
+        
+    }
 }
-
-
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
@@ -73,10 +79,9 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        let theme = MemoryGameTheme()
-        ContentView(viewModel: game, model: theme)
+        ContentView(emojisGame: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game, model: theme)
+        ContentView(emojisGame: game)
             .preferredColorScheme(.light)
     }
 }
