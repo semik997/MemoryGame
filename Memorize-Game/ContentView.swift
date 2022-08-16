@@ -16,17 +16,23 @@ struct ContentView: View {
             HStack {
                 nameTheme
             }
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-                    ForEach (emojisGame.cards) { card in
-                        CardView(card: card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                emojisGame.choose(card)
-                            }
-                    }
+            //            ScrollView {
+            //                LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
+            //                    ForEach (emojisGame.cards) { card in
+            AspectVGrid(items: emojisGame.cards, aspectRaito: 2/3) { card in
+                if card.isMatched && card.isFaceUp {
+                    Rectangle().opacity(0)
+                } else {
+                    CardView(card: card)
+                        .padding(4)
+                        .onTapGesture {
+                            emojisGame.choose(card)
+                        }
                 }
             }
+            //                    }
+            //                }
+            //            }
             // Use theme color for cards
             .foregroundColor(emojisGame.colorCard)
             Spacer()
@@ -92,9 +98,9 @@ struct CardView: View {
     }
     
     private struct DrawingConstants {
-        static let corenerRadius: CGFloat = 20
+        static let corenerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.75
     }
 }
 

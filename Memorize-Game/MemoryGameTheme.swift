@@ -40,7 +40,7 @@ struct MemoryGameTheme {
         //Initialise the theme from static dictionnary
         let theme = Self.allThemes[randomTheme]!
         self.choiseTheme = theme.choiseTheme
-        self.themeEmojis = theme.themeEmojis
+        self.themeEmojis = theme.themeEmojis.shuffled()
         self.themeName = theme.themeName
         self.colorCard = theme.colorCard
     }
